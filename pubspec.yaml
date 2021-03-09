@@ -1,0 +1,18 @@
+name: internet_connection_checker
+description: A pure Dart library that checks for internet by opening a socket to
+  a list of specified addresses, each with individual port and timeout. Defaults
+  are provided for convenience.
+version: 0.0.1
+author: Rounak Tadvi <rounaktadvi786@gmail.com>
+homepage: null
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  universal_io: ^2.0.0
+  
+dev_dependencies:
+  test: ^1.16.6
+  very_good_analysis: ^2.0.0
+  coverage: ^1.0.1
