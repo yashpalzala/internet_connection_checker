@@ -4,7 +4,8 @@ description: A pure Dart library that checks for internet by opening a socket to
   are provided for convenience.
 version: 0.0.1
 author: Rounak Tadvi <rounaktadvi786@gmail.com>
-homepage: https://github.com/RounakTadvi/internet_connection_checker
+repository: https://github.com/RounakTadvi/internet_connection_checker
+homepage: https://github.com/RounakTadvi/internet_connection_checker/tree/main
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
