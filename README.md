@@ -1,3 +1,5 @@
+>* This Code comes from https://github.com/komapeb/data_connection_checker *
+
 # 🌍 Internet Connection Checker
 
 [![internet_connection_checker](https://github.com/RounakTadvi/internet_connection_checker/actions/workflows/main.yaml/badge.svg?branch=main)](https://github.com/RounakTadvi/internet_connection_checker/actions/workflows/main.yaml)
