@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+# [0.0.1]
 
-* TODO: Describe initial release.
+- [x] 🌍 Initial Release (non-breaking change which adds functionality)
+- [x] 📝 Documentation (minor documentation updates)
+- [x] 🧹 Code refactor
