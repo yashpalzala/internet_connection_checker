@@ -231,5 +231,5 @@ See `example` folder for more examples.
 
 Please file feature requests and bugs at the [issue tracker][issues_tracker].
 
-[issues_tracker]: https://https://github.com/RounakTadvi/internet_connection_checker/issues
-[pull_requests]: https://https://github.com/RounakTadvi/internet_connection_checker/pulls
+[issues_tracker]: https://github.com/RounakTadvi/internet_connection_checker/issues
+[pull_requests]: https://github.com/RounakTadvi/internet_connection_checker/pulls
