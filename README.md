@@ -229,7 +229,5 @@ See `example` folder for more examples.
 
 Please file feature requests and bugs at the [issue tracker][issues_tracker].
 
-[issues_tracker]: https://github.com//internet_connection_checker/issues
-[pull_requests]: https://github.com/komapeb/internet_connection_checker/pulls
-[install]: https://pub.dev/packages/internet_connection_checker#-installing-tab-
-[spiritnavigator]: https://spiritnavigator.com/
+[issues_tracker]: https://https://github.com/RounakTadvi/internet_connection_checker/issues
+[pull_requests]: https://https://github.com/RounakTadvi/internet_connection_checker/pulls
