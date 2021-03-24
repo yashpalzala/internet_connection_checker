@@ -121,8 +121,9 @@ class InternetConnectionChecker {
         options.address,
         options.port,
         timeout: options.timeout,
-      );
-      sock.destroy();
+      )
+        ..destroy();
+
       return AddressCheckResult(options, true);
     } catch (e) {
       sock?.destroy();

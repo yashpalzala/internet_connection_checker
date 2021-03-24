@@ -1,8 +1,19 @@
 import 'dart:async';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:universal_io/io.dart';
+
+class MockInternetConnectionChecker extends Mock
+    implements InternetConnectionChecker {}
 
 void main() async {
+  late MockInternetConnectionChecker mockInternetConnectionChecker;
+  setUp(
+    () {
+      mockInternetConnectionChecker = MockInternetConnectionChecker();
+    },
+  );
   group('internet_connection_checker', () {
     StreamSubscription<InternetConnectionStatus>? listener1;
     StreamSubscription<InternetConnectionStatus>? listener2;
@@ -159,4 +170,24 @@ void main() async {
       );
     });
   });
+
+  test(
+    '''throws a SocketException on timeout''',
+    () {
+      when(
+        () => mockInternetConnectionChecker.hasConnection,
+      ).thenAnswer(
+        (_) async => false
+      );
+
+      final Future<bool> call = InternetConnectionChecker().hasConnection;
+
+      expect(
+        call,
+        throwsA(
+          isA<SocketException>(),
+        ),
+      );
+    },
+  );
 }
