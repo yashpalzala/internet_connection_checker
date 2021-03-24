@@ -1,19 +1,8 @@
 import 'dart:async';
-import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:universal_io/io.dart';
-
-class MockInternetConnectionChecker extends Mock
-    implements InternetConnectionChecker {}
 
 void main() async {
-  late MockInternetConnectionChecker mockInternetConnectionChecker;
-  setUp(
-    () {
-      mockInternetConnectionChecker = MockInternetConnectionChecker();
-    },
-  );
   group('internet_connection_checker', () {
     StreamSubscription<InternetConnectionStatus>? listener1;
     StreamSubscription<InternetConnectionStatus>? listener2;
