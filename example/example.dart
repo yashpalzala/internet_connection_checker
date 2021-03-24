@@ -1,11 +1,14 @@
 import 'dart:async';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+
+import 'package:build/internet_connection_checker.dart';
 
 Future<void> main() async {
   // Simple check to see if we have Internet
   print('The statement \'this machine is connected to the Internet\' is: ');
   final bool isConnected = await InternetConnectionChecker().hasConnection;
-  print(isConnected.toString());
+  print(
+    isConnected.toString(),
+  );
   // returns a bool
 
   // We can also get an enum instead of a bool

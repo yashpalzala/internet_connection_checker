@@ -68,7 +68,7 @@ class InternetConnectionChecker {
     <AddressCheckOptions>[
       AddressCheckOptions(
         InternetAddress(
-          '1.1.1.1',
+          '1.1.1.1', // CloudFlare
           type: InternetAddressType.IPv4,
         ),
         port: DEFAULT_PORT,
@@ -76,7 +76,7 @@ class InternetConnectionChecker {
       ),
       AddressCheckOptions(
         InternetAddress(
-          '8.8.4.4',
+          '8.8.4.4', // Google
           type: InternetAddressType.IPv4,
         ),
         port: DEFAULT_PORT,
@@ -84,7 +84,7 @@ class InternetConnectionChecker {
       ),
       AddressCheckOptions(
         InternetAddress(
-          '208.67.222.222',
+          '208.67.222.222', // OpenDNS
           type: InternetAddressType.IPv4,
         ), // OpenDNS
         port: DEFAULT_PORT,
@@ -123,11 +123,16 @@ class InternetConnectionChecker {
         timeout: options.timeout,
       )
         ..destroy();
-
-      return AddressCheckResult(options, true);
+      return AddressCheckResult(
+        options,
+        true,
+      );
     } catch (e) {
       sock?.destroy();
-      return AddressCheckResult(options, false);
+      return AddressCheckResult(
+        options,
+        false,
+      );
     }
   }
 
@@ -146,14 +151,28 @@ class InternetConnectionChecker {
     List<Future<AddressCheckResult>> requests = <Future<AddressCheckResult>>[];
 
     for (AddressCheckOptions addressOptions in addresses) {
-      requests.add(isHostReachable(addressOptions));
+      requests.add(
+        isHostReachable(
+          addressOptions,
+        ),
+      );
     }
-    _lastTryResults =
-        List<AddressCheckResult>.unmodifiable(await Future.wait(requests));
+    _lastTryResults = List<AddressCheckResult>.unmodifiable(
+      await Future.wait(
+        requests,
+      ),
+    );
 
     return _lastTryResults
-        .map((AddressCheckResult result) => result.isSuccess)
-        .contains(true);
+        .map(
+          (
+            AddressCheckResult result,
+          ) =>
+              result.isSuccess,
+        )
+        .contains(
+          true,
+        );
   }
 
   /// Initiates a request to each address in [addresses].
@@ -180,7 +199,9 @@ class InternetConnectionChecker {
   //
   // If there are listeners, a timer is started which runs this function again
   // after the specified time in 'checkInterval'
-  void _maybeEmitStatusUpdate([Timer? timer]) async {
+  void _maybeEmitStatusUpdate([
+    Timer? timer,
+  ]) async {
     // just in case
     _timerHandle?.cancel();
     timer?.cancel();
