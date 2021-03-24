@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:build/internet_connection_checker.dart';
 import 'package:test/test.dart';
 
-
 void main() async {
   group('internet_connection_checker', () {
     StreamSubscription<InternetConnectionStatus>? listener1;
