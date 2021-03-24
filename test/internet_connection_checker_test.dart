@@ -176,9 +176,7 @@ void main() async {
     () {
       when(
         () => mockInternetConnectionChecker.hasConnection,
-      ).thenAnswer(
-        (_) async => false
-      );
+      ).thenAnswer((_) async => false);
 
       final Future<bool> call = InternetConnectionChecker().hasConnection;
 
