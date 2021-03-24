@@ -1,4 +1,4 @@
-name: internet_connection_checker
+name: Dart CI
 
 on: [push]
 
