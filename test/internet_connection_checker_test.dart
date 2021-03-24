@@ -170,22 +170,4 @@ void main() async {
       );
     });
   });
-
-  test(
-    '''throws a SocketException on timeout''',
-    () {
-      when(
-        () => mockInternetConnectionChecker.hasConnection,
-      ).thenAnswer((_) async => false);
-
-      final Future<bool> call = InternetConnectionChecker().hasConnection;
-
-      expect(
-        call,
-        throwsA(
-          isA<SocketException>(),
-        ),
-      );
-    },
-  );
 }
