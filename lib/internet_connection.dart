@@ -64,23 +64,34 @@ class InternetConnectionChecker {
   /// | 208.67.222.222 | OpenDNS    | https://use.opendns.com/                        |
   /// | 208.67.220.220 | OpenDNS    | https://use.opendns.com/                        |
   static final List<AddressCheckOptions> DEFAULT_ADDRESSES =
-      List<AddressCheckOptions>.unmodifiable(<AddressCheckOptions>[
-    AddressCheckOptions(
-      InternetAddress('1.1.1.1'),
-      port: DEFAULT_PORT,
-      timeout: DEFAULT_TIMEOUT,
-    ),
-    AddressCheckOptions(
-      InternetAddress('8.8.4.4'),
-      port: DEFAULT_PORT,
-      timeout: DEFAULT_TIMEOUT,
-    ),
-    AddressCheckOptions(
-      InternetAddress('208.67.222.222'), // OpenDNS
-      port: DEFAULT_PORT,
-      timeout: DEFAULT_TIMEOUT,
-    ),
-  ]);
+      List<AddressCheckOptions>.unmodifiable(
+    <AddressCheckOptions>[
+      AddressCheckOptions(
+        InternetAddress(
+          '1.1.1.1',
+          type: InternetAddressType.IPv4,
+        ),
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+      AddressCheckOptions(
+        InternetAddress(
+          '8.8.4.4',
+          type: InternetAddressType.IPv4,
+        ),
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+      AddressCheckOptions(
+        InternetAddress(
+          '208.67.222.222',
+          type: InternetAddressType.IPv4,
+        ), // OpenDNS
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+    ],
+  );
 
   /// A list of internet addresses (with port and timeout) to ping.
   ///
