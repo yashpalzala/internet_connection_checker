@@ -14,8 +14,8 @@ Future<void> main() async {
   // We can also get an enum instead of a bool
   print(
       'Current status: ${await InternetConnectionChecker().connectionStatus}');
-  // Prints either DataConnectionStatus.connected
-  // or DataConnectionStatus.disconnected
+  // Prints either InternetConnectionStatus.connected
+  // or InternetConnectionStatus.disconnected
 
   // This returns the last results from the last call
   // to either hasConnection or connectionStatus
