@@ -1,5 +1,10 @@
-# [0.0.1]
+## 0.0.2
 
-- [x] 🌍 Initial Release (non-breaking change which adds functionality)
-- [x] 📝 Documentation (minor documentation updates)
-- [x] 🧹 Code refactor
+- 📝 Updated Documentation
+- 🗑️ Update a dependency to the latest release.
+
+## 0.0.1
+
+- 🌍 Initial Release (non-breaking change which adds functionality)
+- 📝 Documentation (minor documentation updates)
+- 🧹 Code refactor
