@@ -14,13 +14,6 @@ void main() async {
       listener2?.cancel();
     });
 
-    test('''Initial results List 'lastTryResults' should be empty''', () {
-      expect(
-        InternetConnectionChecker().lastTryResults,
-        isEmpty,
-      );
-    });
-
     test('''Shouldn't have any listeners attached''', () {
       expect(
         InternetConnectionChecker().hasListeners,
@@ -39,15 +32,6 @@ void main() async {
       expect(
         await InternetConnectionChecker().hasConnection,
         isA<bool>(),
-      );
-    });
-
-    test(
-        '''InternetConnectionChecker().lastTryResults should not be empty after '''
-        '''an awaited call to either hasConnection or connectionStatus''', () {
-      expect(
-        InternetConnectionChecker().lastTryResults,
-        isNotEmpty,
       );
     });
 

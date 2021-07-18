@@ -17,10 +17,6 @@ Future<void> main() async {
   // Prints either InternetConnectionStatus.connected
   // or InternetConnectionStatus.disconnected
 
-  // This returns the last results from the last call
-  // to either hasConnection or connectionStatus
-  print('Last results: ${InternetConnectionChecker().lastTryResults}');
-
   // actively listen for status updates
   StreamSubscription<InternetConnectionStatus> listener =
       InternetConnectionChecker().onStatusChange.listen(

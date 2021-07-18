@@ -136,43 +136,30 @@ class InternetConnectionChecker {
     }
   }
 
-  /// Returns the results from the last check.
-  ///
-  /// The list is populated only when [hasConnection]
-  /// (or [connectionStatus]) is called.
-  List<AddressCheckResult> get lastTryResults => _lastTryResults;
-  List<AddressCheckResult> _lastTryResults = <AddressCheckResult>[];
-
   /// Initiates a request to each address in [addresses].
   /// If at least one of the addresses is reachable
   /// we assume an internet connection is available and return `true`.
   /// `false` otherwise.
   Future<bool> get hasConnection async {
-    List<Future<AddressCheckResult>> requests = <Future<AddressCheckResult>>[];
+    final Completer<bool> result = Completer<bool>();
+    int length = addresses.length;
 
     for (AddressCheckOptions addressOptions in addresses) {
-      requests.add(
-        isHostReachable(
-          addressOptions,
-        ),
+      await isHostReachable(addressOptions).then(
+        (AddressCheckResult request) {
+          length -= 1;
+          if (!result.isCompleted) {
+            if (request.isSuccess) {
+              result.complete(true);
+            } else if (length == 0) {
+              result.complete(false);
+            }
+          }
+        },
       );
     }
-    _lastTryResults = List<AddressCheckResult>.unmodifiable(
-      await Future.wait(
-        requests,
-      ),
-    );
 
-    return _lastTryResults
-        .map(
-          (
-            AddressCheckResult result,
-          ) =>
-              result.isSuccess,
-        )
-        .contains(
-          true,
-        );
+    return result.future;
   }
 
   /// Initiates a request to each address in [addresses].
