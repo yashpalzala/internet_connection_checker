@@ -26,9 +26,11 @@ Future<void> main() async {
     (InternetConnectionStatus status) {
       switch (status) {
         case InternetConnectionStatus.connected:
+          // ignore: avoid_print
           print('Data connection is available.');
           break;
         case InternetConnectionStatus.disconnected:
+          // ignore: avoid_print
           print('You are disconnected from the internet.');
           break;
       }
