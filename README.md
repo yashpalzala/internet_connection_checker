@@ -2,7 +2,7 @@
 
 # 🌍 Internet Connection Checker
 
-[![Dart CI](https://github.com/RounakTadvi/internet_connection_checker/actions/workflows/main.yaml/badge.svg?branch=main)](https://github.com/RounakTadvi/internet_connection_checker/actions/workflows/main.yaml)
+[![Dart CI](https://github.com/RounakTadvi/internet_connection_checker/actions/workflows/main.yaml/badge.svg)](https://github.com/RounakTadvi/internet_connection_checker/actions/workflows/main.yaml)
 [![codecov](https://codecov.io/gh/RounakTadvi/internet_connection_checker/branch/main/graph/badge.svg)](https://codecov.io/gh/RounakTadvi/internet_connection_checker)
 [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
