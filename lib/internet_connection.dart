@@ -145,7 +145,7 @@ class InternetConnectionChecker {
     int length = addresses.length;
 
     for (AddressCheckOptions addressOptions in addresses) {
-      await isHostReachable(addressOptions).then(
+      isHostReachable(addressOptions).then(
         (AddressCheckResult request) {
           length -= 1;
           if (!result.isCompleted) {
