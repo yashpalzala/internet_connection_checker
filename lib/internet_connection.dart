@@ -71,48 +71,36 @@ class InternetConnectionChecker {
           '1.1.1.1', // CloudFlare
           type: InternetAddressType.IPv4,
         ),
-        port: DEFAULT_PORT,
-        timeout: DEFAULT_TIMEOUT,
       ),
       AddressCheckOptions(
         InternetAddress(
           '2606:4700:4700::1111', // CloudFlare
           type: InternetAddressType.IPv6,
         ),
-        port: DEFAULT_PORT,
-        timeout: DEFAULT_TIMEOUT,
       ),
       AddressCheckOptions(
         InternetAddress(
           '8.8.4.4', // Google
           type: InternetAddressType.IPv4,
         ),
-        port: DEFAULT_PORT,
-        timeout: DEFAULT_TIMEOUT,
       ),
       AddressCheckOptions(
         InternetAddress(
           '2001:4860:4860::8888', // Google
           type: InternetAddressType.IPv6,
         ),
-        port: DEFAULT_PORT,
-        timeout: DEFAULT_TIMEOUT,
       ),
       AddressCheckOptions(
         InternetAddress(
           '208.67.222.222', // OpenDNS
           type: InternetAddressType.IPv4,
         ), // OpenDNS
-        port: DEFAULT_PORT,
-        timeout: DEFAULT_TIMEOUT,
       ),
       AddressCheckOptions(
         InternetAddress(
           '2620:0:ccc::2', // OpenDNS
           type: InternetAddressType.IPv6,
         ), // OpenDNS
-        port: DEFAULT_PORT,
-        timeout: DEFAULT_TIMEOUT,
       ),
     ],
   );
@@ -168,7 +156,8 @@ class InternetConnectionChecker {
     final Completer<bool> result = Completer<bool>();
     int length = addresses.length;
 
-    for (AddressCheckOptions addressOptions in addresses) {
+    for (final AddressCheckOptions addressOptions in addresses) {
+      // ignore: unawaited_futures
       isHostReachable(addressOptions).then(
         (AddressCheckResult request) {
           length -= 1;
@@ -210,14 +199,14 @@ class InternetConnectionChecker {
   //
   // If there are listeners, a timer is started which runs this function again
   // after the specified time in 'checkInterval'
-  void _maybeEmitStatusUpdate([
+  Future<void> _maybeEmitStatusUpdate([
     Timer? timer,
   ]) async {
     // just in case
     _timerHandle?.cancel();
     timer?.cancel();
 
-    InternetConnectionStatus currentStatus = await connectionStatus;
+    final InternetConnectionStatus currentStatus = await connectionStatus;
 
     // only send status update if last status differs from current
     // and if someone is actually listening

@@ -112,23 +112,59 @@ Here's some more info about the defaults:
 | 208.67.220.220 | OpenDNS    | <https://use.opendns.com/>                        |
 
 ```dart
-static final List<AddressCheckOptions> DEFAULT_ADDRESSES = List.unmodifiable([
-  AddressCheckOptions(
-    InternetAddress('1.1.1.1'),
-    port: DEFAULT_PORT,
-    timeout: DEFAULT_TIMEOUT,
-  ),
-  AddressCheckOptions(
-    InternetAddress('8.8.4.4'),
-    port: DEFAULT_PORT,
-    timeout: DEFAULT_TIMEOUT,
-  ),
-  AddressCheckOptions(
-    InternetAddress('208.67.222.222'),
-    port: DEFAULT_PORT,
-    timeout: DEFAULT_TIMEOUT,
-  ),
-]);
+static final List<AddressCheckOptions> DEFAULT_ADDRESSES =
+      List<AddressCheckOptions>.unmodifiable(
+    <AddressCheckOptions>[
+      AddressCheckOptions(
+        InternetAddress(
+          '1.1.1.1', // CloudFlare
+          type: InternetAddressType.IPv4,
+        ),
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+      AddressCheckOptions(
+        InternetAddress(
+          '2606:4700:4700::1111', // CloudFlare
+          type: InternetAddressType.IPv6,
+        ),
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+      AddressCheckOptions(
+        InternetAddress(
+          '8.8.4.4', // Google
+          type: InternetAddressType.IPv4,
+        ),
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+      AddressCheckOptions(
+        InternetAddress(
+          '2001:4860:4860::8888', // Google
+          type: InternetAddressType.IPv6,
+        ),
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+      AddressCheckOptions(
+        InternetAddress(
+          '208.67.222.222', // OpenDNS
+          type: InternetAddressType.IPv4,
+        ), // OpenDNS
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+      AddressCheckOptions(
+        InternetAddress(
+          '2620:0:ccc::2', // OpenDNS
+          type: InternetAddressType.IPv6,
+        ), // OpenDNS
+        port: DEFAULT_PORT,
+        timeout: DEFAULT_TIMEOUT,
+      ),
+    ],
+  );
 ```
 
 #### `DEFAULT_PORT`

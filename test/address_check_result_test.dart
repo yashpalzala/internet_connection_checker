@@ -10,12 +10,10 @@ void main() {
       // Setup - Arrange
       final InternetAddress tInternetAddress = InternetAddress('1.1.1.1');
       const int DEFAULT_PORT = 43;
-      const Duration DEFAULT_TIMEOUT = Duration(seconds: 10);
       const bool isSuccess = true;
       final AddressCheckOptions tOptions = AddressCheckOptions(
         tInternetAddress,
         port: DEFAULT_PORT,
-        timeout: DEFAULT_TIMEOUT,
       );
 
       final AddressCheckResult tResult =

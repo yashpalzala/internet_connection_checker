@@ -14,7 +14,6 @@ void main() {
       final AddressCheckOptions tOptions = AddressCheckOptions(
         tInternetAddress,
         port: DEFAULT_PORT,
-        timeout: DEFAULT_TIMEOUT,
       );
       // Action - Act
 
