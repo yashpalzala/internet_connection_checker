@@ -68,7 +68,7 @@ More info on the issue in general:
 
 - <https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out/27312494#27312494> (this is the best approach so far IMO and it's what I'm using)
 
-You can use this package in combination with `connectivity` in the following way:
+You can use this package in combination with `connectivity_plus` in the following way:
 
 ```dart
 var isDeviceConnected = false;
@@ -80,7 +80,7 @@ var subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResu
 });
 ```
 
-*Note: remember to properly cancel the `subscription` when it's no longer needed. See `connectivity` package docs for more info.*
+*Note: remember to properly cancel the `subscription` when it's no longer needed. See `connectivity_plus` package docs for more info.*
 
 ## How it works
 
