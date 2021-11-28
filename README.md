@@ -62,7 +62,7 @@ if(result == true) {
 
 ## Purpose
 
-The reason this package exists is that `connectivity` package cannot reliably determine if a data connection is actually available. More info on its page here: <https://pub.dev/packages/connectivity>
+The reason this package exists is that `connectivity_plus` package cannot reliably determine if a data connection is actually available. More info on its page here: <https://pub.dev/packages/connectivity_plus>
 
 More info on the issue in general:
 
