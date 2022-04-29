@@ -14,18 +14,21 @@ a few issues. [Feedback][issues_tracker] is welcome.*
 
 ### Table of contents
 
-- [Description](#description)
-- [Quick start](#quick-start)
-- [Purpose](#purpose)
-- [How it works](#how-it-works)
-- [Defaults](#defaults)
-    - [`DEFAULT_ADDRESSES`](#default_addresses)
-    - [`DEFAULT_PORT`](#default_port)
-    - [`DEFAULT_TIMEOUT`](#default_timeout)
-    - [`DEFAULT_INTERVAL`](#default_interval)
-- [Usage](#usage)
-- [License](#license)
-- [Features and bugs](#features-and-bugs)
+- [🌍 Internet Connection Checker](#-internet-connection-checker)
+    - [Table of contents](#table-of-contents)
+  - [Description](#description)
+  - [Quick start](#quick-start)
+  - [Purpose](#purpose)
+  - [How it works](#how-it-works)
+  - [Defaults](#defaults)
+      - [`DEFAULT_ADDRESSES`](#default_addresses)
+      - [`DEFAULT_PORT`](#default_port)
+      - [`DEFAULT_TIMEOUT`](#default_timeout)
+      - [`DEFAULT_INTERVAL`](#default_interval)
+  - [Usage](#usage)
+    - [Singleton example](#singleton-example)
+    - [Create instance example](#create-instance-example)
+  - [Features and bugs](#features-and-bugs)
 
 ## Description
 
@@ -208,7 +211,9 @@ Duration checkInterval = DEFAULT_INTERVAL;
 
 ## Usage
 
-Example:
+The `InternetConnectionChecker` can be used as a singleton or can be instantiated with custom values.
+
+### Singleton example
 
 ```dart
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -246,6 +251,43 @@ main() async {
   // close listener after 30 seconds, so the program doesn't run forever
   await Future.delayed(Duration(seconds: 30));
   await listener.cancel();
+}
+```
+
+*Note: Remember to dispose of any listeners,
+when they're not needed to prevent memory leaks,
+e.g. in a* `StatefulWidget`'s *dispose() method*:
+  
+```dart
+...
+@override
+void dispose() {
+  listener.cancel();
+  super.dispose();
+}
+...
+```
+
+See `example` folder for more examples.
+
+### Create instance example
+
+```dart
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+
+main() async {
+  final customInstance = InternetConnectionChecker.createInstance(
+    checkTimeout: const Duration(seconds: 1), // Custom check timeout
+    checkInterval: const Duration(seconds: 1), // Custom check interval
+    addresses: [
+      ... // Custom addresses
+    ],
+  );
+
+  // Register it with any dependency injection framework. For example GetIt.
+  GetIt.registerSingleton<InternetConnectionChecker>(
+    customInstance,
+  );
 }
 ```
 
