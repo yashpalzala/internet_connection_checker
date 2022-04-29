@@ -6,7 +6,26 @@ class InternetConnectionChecker {
   /// This is a singleton that can be accessed like a regular constructor
   /// i.e. InternetConnectionChecker() always returns the same instance.
   factory InternetConnectionChecker() => _instance;
-  InternetConnectionChecker._() {
+
+  /// Creates an instance of the [InternetConnectionChecker]. This can be
+  /// registered in any dependency injection framework with custom values for
+  /// the [checkTimeout] and [checkInterval].
+  InternetConnectionChecker.createInstance({
+    this.checkTimeout = DEFAULT_TIMEOUT,
+    this.checkInterval = DEFAULT_INTERVAL,
+    List<AddressCheckOptions>? addresses,
+  }) {
+    this.addresses = addresses ??
+        DEFAULT_ADDRESSES
+            .map(
+              (AddressCheckOptions e) => AddressCheckOptions(
+                e.address,
+                port: e.port,
+                timeout: checkTimeout,
+              ),
+            )
+            .toList();
+
     // immediately perform an initial check so we know the last status?
     // connectionStatus.then((status) => _lastStatus = status);
 
@@ -105,6 +124,8 @@ class InternetConnectionChecker {
     ],
   );
 
+  late List<AddressCheckOptions> _addresses;
+
   /// A list of internet addresses (with port and timeout) to ping.
   ///
   /// These should be globally available destinations.
@@ -117,10 +138,15 @@ class InternetConnectionChecker {
   /// but you can, of course, supply your own.
   ///
   /// See [AddressCheckOptions] for more info.
-  List<AddressCheckOptions> addresses = DEFAULT_ADDRESSES;
+  List<AddressCheckOptions> get addresses => _addresses;
+
+  set addresses(List<AddressCheckOptions> value) {
+    _addresses = List<AddressCheckOptions>.unmodifiable(value);
+    _maybeEmitStatusUpdate();
+  }
 
   static final InternetConnectionChecker _instance =
-      InternetConnectionChecker._();
+      InternetConnectionChecker.createInstance();
 
   /// Ping a single address. See [AddressCheckOptions] for
   /// info on the accepted argument.
@@ -192,7 +218,13 @@ class InternetConnectionChecker {
   /// there's change from the previous status.
   ///
   /// Defaults to [DEFAULT_INTERVAL] (10 seconds).
-  Duration checkInterval = DEFAULT_INTERVAL;
+  final Duration checkInterval;
+
+  /// The timeout period before a check request is dropped and an address is
+  /// considered unreachable.
+  ///
+  /// Defaults to [DEFAULT_TIMEOUT] (10 seconds).
+  final Duration checkTimeout;
 
   // Checks the current status, compares it with the last and emits
   // an event only if there's a change and there are attached listeners

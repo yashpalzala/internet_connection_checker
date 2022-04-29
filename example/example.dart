@@ -3,6 +3,23 @@ import 'dart:async';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 Future<void> main() async {
+  // Check internet connection with singleton (no custom values allowed)
+  await execute(InternetConnectionChecker());
+
+  // Create customized instance which can be registered via dependency injection
+  final InternetConnectionChecker customInstance =
+      InternetConnectionChecker.createInstance(
+    checkTimeout: const Duration(seconds: 1),
+    checkInterval: const Duration(seconds: 1),
+  );
+
+  // Check internet connection with created instance
+  await execute(customInstance);
+}
+
+Future<void> execute(
+  InternetConnectionChecker internetConnectionChecker,
+) async {
   // Simple check to see if we have Internet
   // ignore: avoid_print
   print('''The statement 'this machine is connected to the Internet' is: ''');
@@ -16,7 +33,8 @@ Future<void> main() async {
   // We can also get an enum instead of a bool
   // ignore: avoid_print
   print(
-      'Current status: ${await InternetConnectionChecker().connectionStatus}');
+    'Current status: ${await InternetConnectionChecker().connectionStatus}',
+  );
   // Prints either InternetConnectionStatus.connected
   // or InternetConnectionStatus.disconnected
 
