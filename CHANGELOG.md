@@ -1,3 +1,7 @@
+## 0.0.1+4
+
+- Added option to customize the interval, timeout, and addresses. Thanks [Jop Middelkamp](https://github.com/jopmiddelkamp)!
+
 ## 0.0.1+3
 
 - Add IPv6 hosts to the default addresses. Thanks [MrCsabaToth](https://github.com/MrCsabaToth)!
