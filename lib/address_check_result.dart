@@ -5,9 +5,9 @@ part of internet_connection_checker;
 class AddressCheckResult {
   /// [AddressCheckResult] constructor
   AddressCheckResult(
-    this.options,
-    this.isSuccess,
-  );
+    this.options, {
+    required this.isSuccess,
+  });
 
   /// AddressCheckOptions
   final AddressCheckOptions options;

@@ -1,6 +1,6 @@
 ## 0.0.1+4
 
-- Added option to customize the interval, timeout, and addresses. Thanks [Jop Middelkamp](https://github.com/jopmiddelkamp)!
+- Add option to customize the interval, timeout, and network addresses. Thanks [Jop Middelkamp](https://github.com/jopmiddelkamp)!
 
 ## 0.0.1+3
 

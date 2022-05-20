@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:test/test.dart';
 
-Future<void> main() async {
+void main() {
   group('internet_connection_checker', () {
     StreamSubscription<InternetConnectionStatus>? listener1;
     StreamSubscription<InternetConnectionStatus>? listener2;
@@ -189,7 +189,7 @@ Future<void> main() async {
     });
 
     test('''We should be able to set custom addresses''', () async {
-      final List<AddressCheckOptions> addresses = [
+      final List<AddressCheckOptions> addresses = <AddressCheckOptions>[
         InternetConnectionChecker.DEFAULT_ADDRESSES.first,
       ];
       final InternetConnectionChecker internetConnectionChecker =

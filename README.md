@@ -1,4 +1,4 @@
->* This Code comes from https://github.com/komapeb/data_connection_checker *
+>* NOTE: This package is a continuation of [data_connection_checker](https://github.com/komapeb/data_connection_checker) which currently is not continued. * 
 
 # 🌍 Internet Connection Checker
 

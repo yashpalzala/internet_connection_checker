@@ -163,13 +163,13 @@ class InternetConnectionChecker {
         ..destroy();
       return AddressCheckResult(
         options,
-        true,
+        isSuccess: true,
       );
     } catch (e) {
       sock?.destroy();
       return AddressCheckResult(
         options,
-        false,
+        isSuccess: false,
       );
     }
   }
