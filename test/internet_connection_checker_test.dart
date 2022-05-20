@@ -143,5 +143,63 @@ Future<void> main() async {
         isFalse,
       );
     });
+
+    test('''We should be able to set a custom timeout value''', () async {
+      const Duration timeout = Duration(seconds: 1);
+      final InternetConnectionChecker internetConnectionChecker =
+          InternetConnectionChecker.createInstance(
+        checkTimeout: timeout,
+      );
+      expect(
+        internetConnectionChecker.addresses.every(
+          (AddressCheckOptions element) => element.timeout == timeout,
+        ),
+        isTrue,
+      );
+    });
+
+    test('''We should be able to set a custom interval value''', () async {
+      const Duration interval = Duration(seconds: 1);
+      final InternetConnectionChecker internetConnectionChecker =
+          InternetConnectionChecker.createInstance(
+        checkInterval: interval,
+      );
+      expect(
+        internetConnectionChecker.checkInterval,
+        interval,
+      );
+    });
+
+    test('''We should be able to set a custom timeout value''', () async {
+      const Duration timeout = Duration(seconds: 1);
+      final InternetConnectionChecker internetConnectionChecker =
+          InternetConnectionChecker.createInstance(
+        checkTimeout: timeout,
+      );
+      expect(
+        internetConnectionChecker.checkTimeout,
+        timeout,
+      );
+      expect(
+        internetConnectionChecker.addresses.every(
+          (AddressCheckOptions element) => element.timeout == timeout,
+        ),
+        isTrue,
+      );
+    });
+
+    test('''We should be able to set custom addresses''', () async {
+      final List<AddressCheckOptions> addresses = [
+        InternetConnectionChecker.DEFAULT_ADDRESSES.first,
+      ];
+      final InternetConnectionChecker internetConnectionChecker =
+          InternetConnectionChecker.createInstance(
+        addresses: addresses,
+      );
+      expect(
+        internetConnectionChecker.addresses,
+        addresses,
+      );
+    });
   });
 }

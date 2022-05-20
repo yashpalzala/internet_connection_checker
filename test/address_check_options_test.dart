@@ -18,8 +18,10 @@ void main() {
       // Action - Act
 
       // Result - Assert
-      expect(tOptions.toString(),
-          'AddressCheckOptions($tInternetAddress, $DEFAULT_PORT, $DEFAULT_TIMEOUT)');
+      expect(
+        tOptions.toString(),
+        'AddressCheckOptions($tInternetAddress, $DEFAULT_PORT, $DEFAULT_TIMEOUT)',
+      );
     },
   );
 }
