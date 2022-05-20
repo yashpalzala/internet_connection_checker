@@ -16,8 +16,11 @@ jobs:
       - name: Format
         run: dart format --set-exit-if-changed .
       
+      - name: Activate coverage 
+        run: dart pub global activate coverage
+
       - name: Run tests
-        run: dart test --coverage=coverage && pub run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib
+        run: dart pub global run coverage:test_with_coverage
       
       - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
