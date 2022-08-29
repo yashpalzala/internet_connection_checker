@@ -141,10 +141,6 @@ class InternetConnectionChecker {
   /// See [AddressCheckOptions] for more info.
   List<AddressCheckOptions> get addresses => _addresses;
 
-  /// A callback to print debug messages
-  /// TODO: I should remove this if I make a PR
-  void Function(String)? log;
-
   set addresses(List<AddressCheckOptions> value) {
     _addresses = List<AddressCheckOptions>.unmodifiable(value);
     _maybeEmitStatusUpdate();
@@ -158,7 +154,6 @@ class InternetConnectionChecker {
   Future<AddressCheckResult> isHostReachable(
     AddressCheckOptions options,
   ) async {
-    log?.call('[ICC] Testing reachability to ${options.address ?? options.hostname}');
     Socket? sock;
     try {
       sock = await Socket.connect(
@@ -169,13 +164,11 @@ class InternetConnectionChecker {
         timeout: options.timeout,
       )
       ..destroy();
-      log?.call('[ICC] Did connect to ${options.address ?? options.hostname}');
       return AddressCheckResult(
         options,
         isSuccess: true,
       );
     } catch (e) {
-      log?.call('[ICC] Could not connect to ${options.address ?? options.hostname}: $e');
       sock?.destroy();
       return AddressCheckResult(
         options,
@@ -191,7 +184,6 @@ class InternetConnectionChecker {
   Future<bool> get hasConnection async {
     final Completer<bool> result = Completer<bool>();
     int length = addresses.length;
-    log?.call('[ICC] Initiated hasConnection for $length targets');
 
     for (final AddressCheckOptions addressOptions in addresses) {
       // ignore: unawaited_futures
@@ -245,7 +237,6 @@ class InternetConnectionChecker {
   Future<void> _maybeEmitStatusUpdate([
     Timer? timer,
   ]) async {
-    log?.call('[ICC] _maybeEmitStatusUpdate');
     // just in case
     _timerHandle?.cancel();
     timer?.cancel();
