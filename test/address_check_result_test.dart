@@ -12,7 +12,7 @@ void main() {
       const int DEFAULT_PORT = 43;
       const bool isSuccess = true;
       final AddressCheckOptions tOptions = AddressCheckOptions(
-        tInternetAddress,
+        address: tInternetAddress,
         port: DEFAULT_PORT,
       );
 
