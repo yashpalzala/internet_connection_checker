@@ -159,7 +159,7 @@ class InternetConnectionChecker {
       sock = await Socket.connect(
         // If address is null, the [AddressCheckOptions] constructor will have
         // asserted that hostname must not be null.
-        options.address ?? (await InternetAddress.lookup(options.hostname!)),
+        options.address ?? options.hostname,
         options.port,
         timeout: options.timeout,
       )
