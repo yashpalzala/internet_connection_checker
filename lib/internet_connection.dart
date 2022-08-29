@@ -163,12 +163,14 @@ class InternetConnectionChecker {
         options.port,
         timeout: options.timeout,
       )
-        ..destroy();
+      ..destroy();
+      print('[ICC] Did connect to ${options.address ?? options.hostname}');
       return AddressCheckResult(
         options,
         isSuccess: true,
       );
     } catch (e) {
+      print('[ICC] Could not connect to ${options.address ?? options.hostname}: $e');
       sock?.destroy();
       return AddressCheckResult(
         options,
