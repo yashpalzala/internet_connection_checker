@@ -19,7 +19,8 @@ class InternetConnectionChecker {
         DEFAULT_ADDRESSES
             .map(
               (AddressCheckOptions e) => AddressCheckOptions(
-                e.address,
+                address: e.address,
+                hostname: e.hostname,
                 port: e.port,
                 timeout: checkTimeout,
               ),
@@ -86,37 +87,37 @@ class InternetConnectionChecker {
       List<AddressCheckOptions>.unmodifiable(
     <AddressCheckOptions>[
       AddressCheckOptions(
-        InternetAddress(
+        address: InternetAddress(
           '1.1.1.1', // CloudFlare
           type: InternetAddressType.IPv4,
         ),
       ),
       AddressCheckOptions(
-        InternetAddress(
+        address: InternetAddress(
           '2606:4700:4700::1111', // CloudFlare
           type: InternetAddressType.IPv6,
         ),
       ),
       AddressCheckOptions(
-        InternetAddress(
+        address: InternetAddress(
           '8.8.4.4', // Google
           type: InternetAddressType.IPv4,
         ),
       ),
       AddressCheckOptions(
-        InternetAddress(
+        address: InternetAddress(
           '2001:4860:4860::8888', // Google
           type: InternetAddressType.IPv6,
         ),
       ),
       AddressCheckOptions(
-        InternetAddress(
+        address: InternetAddress(
           '208.67.222.222', // OpenDNS
           type: InternetAddressType.IPv4,
         ), // OpenDNS
       ),
       AddressCheckOptions(
-        InternetAddress(
+        address: InternetAddress(
           '2620:0:ccc::2', // OpenDNS
           type: InternetAddressType.IPv6,
         ), // OpenDNS
@@ -156,11 +157,13 @@ class InternetConnectionChecker {
     Socket? sock;
     try {
       sock = await Socket.connect(
-        options.address,
+        // If address is null, the [AddressCheckOptions] constructor will have
+        // asserted that hostname must not be null.
+        options.address ?? options.hostname,
         options.port,
         timeout: options.timeout,
       )
-        ..destroy();
+      ..destroy();
       return AddressCheckResult(
         options,
         isSuccess: true,
