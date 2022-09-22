@@ -163,7 +163,7 @@ class InternetConnectionChecker {
         options.port,
         timeout: options.timeout,
       )
-      ..destroy();
+        ..destroy();
       return AddressCheckResult(
         options,
         isSuccess: true,

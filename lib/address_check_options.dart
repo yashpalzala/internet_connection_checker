@@ -14,9 +14,10 @@ class AddressCheckOptions {
     this.port = InternetConnectionChecker.DEFAULT_PORT,
     this.timeout = InternetConnectionChecker.DEFAULT_TIMEOUT,
   }) : assert(
-    (address != null || hostname != null) && ((address != null) != (hostname != null)),
-    'Either address or hostname must be provided, but not both.',
-  );
+          (address != null || hostname != null) &&
+              ((address != null) != (hostname != null)),
+          'Either address or hostname must be provided, but not both.',
+        );
 
   /// An internet address or a Unix domain address.
   /// This object holds an internet address. If this internet address
