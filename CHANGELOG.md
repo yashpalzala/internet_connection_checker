@@ -1,3 +1,8 @@
+## 0.0.1+5
+
+- Ability to provide a host name instead of IP address. Thanks [gampixi](https://github.com/gampixi)!
+- Update dependencies to the latest release
+  
 ## 0.0.1+4
 
 - Add option to customize the interval, timeout, and network addresses. Thanks [Jop Middelkamp](https://github.com/jopmiddelkamp)!
