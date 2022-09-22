@@ -1,3 +1,7 @@
+## 1.0.0+1
+
+- Updated Documentation (README.md)
+
 ## 1.0.0
 
 - **Breaking change**: Ability to provide a host name instead of IP address. Thanks [gampixi](https://github.com/gampixi)!. Update the AddressCheckOptions constructor if custom addresses are being used since the positional argument address is now a named, optional argument.
