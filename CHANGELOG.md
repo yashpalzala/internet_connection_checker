@@ -1,6 +1,6 @@
-## 0.0.1+5
+## 1.0.0
 
-- Ability to provide a host name instead of IP address. Thanks [gampixi](https://github.com/gampixi)!
+- **Breaking change**: Ability to provide a host name instead of IP address. Thanks [gampixi](https://github.com/gampixi)!. Update the AddressCheckOptions constructor
 - Update dependencies to the latest release
   
 ## 0.0.1+4
